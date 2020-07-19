@@ -1,0 +1,291 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Show</title>
+    <link href="~/Scripts/layui/css/layui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/layui/layui.all.js"></script>
+    <script type="text/javascript">
+        var table, layer;
+        $(function () {
+            layui.use("table", function () {
+                var form = layui.form;
+                table = layui.table;
+                layer = layui.layer;
+                var laydate = layui.laydate;
+
+                laydate.render({
+                    elem: '#in-date' //指定元素
+                });
+
+                //第一个实例
+                table.render({
+                    elem: '#td'
+                    , url: '/OilMaterialOrder/Select' //数据接口
+                    , page: false //开启分页
+                    //, toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+                    , id: 'test'
+                    , where: { strid: $('#s').val() }
+                    , cols: [[ //表头
+                        { type: 'numbers', title: '序号' }
+                        , { field: 'Id', hide: true, title: 'Id' }
+                        , { field: 'No', title: '申请单号' }
+                        , { field: 'Name', title: '申请人' }
+                        , { field: 'ApplyPersonId', hide:true, title: '申请人Id' }
+                        , {
+                            field: 'ApplyDate', title: '申请日期', templet: function (d) {
+                                return ftime(d.ApplyDate);
+                            }}
+                        , { field: 'Discrible', title: '审批状态'/*, sort: true*/ }
+                        //, { field: 'ProcessItemId', title: '员工姓名' }
+                        , { title: '操作', templet: '#toolDemo'}
+                    ]]
+                });
+
+                table.on('tool(test)', function (obj) {
+                    if (obj.event == 'sel') {
+                        table.render({
+                            elem: '#lCtd'
+                            , url: '/ProcessStepRecord/select' //数据接口
+                            , page: false //开启分页
+                            //, toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+                            , id: 'testlC'
+                            , where: { strRefOrderId: obj.data.Id }
+                            , cols: [[ //表头
+                                { field: 'OrgName', title: '区域' }
+                                , { field: 'JobName', title: '职位' }
+                                , { field: 'uName', title: '审批人' }
+                                , {
+                                    align: 'center', title: '处理结果', templet: function (d) {
+                                        if (d.WhetherToExecute == '0') {
+                                            return '<i class="layui-icon" style="font-size: 30px; color:#778899;">&#xe601;</i>'
+                                        } else if (d.Result == '1') {
+                                            return '<i class="layui-icon" style="font-size: 30px; color: #7FFF00;">&#x1005;</i>'
+                                        } else if (d.Result == '0') {
+                                            return '<i class="layui-icon" style="font-size: 30px; color: #FF0000">&#x1007;</i>'
+                                        }
+                                    }
+                                }
+                            ]]
+                        });
+
+                        layer.open({
+                            type: 1,
+                            shade: 0.3,
+                            shadeClose: true,
+                            area: ['600px', '400px'],
+                            title: '流程',
+                            content: $('#lC')
+                            //content: '/Job/Operate?strId=' + obj.data.Id + '&strName=' + obj.data.Name + '&strCode=' + obj.data.Code //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                        })
+                    } else if (obj.event == 'del') {
+                        layer.confirm('确认删除吗?', { icon: 3, title: '提示' }, function (index) {
+                            //do something
+                            $.ajax({
+                                url: '/OilMaterialOrder/del',
+                                type: 'post',
+                                data: { 'strId': obj.data.Id },
+                                success: function (msg) {
+                                    if (msg == 'OK') {
+                                        table.reload('test');
+                                    }
+                                }
+                            })
+                            layer.close(index);
+                        });
+                    } else if (obj.event == 'up') {
+                        layer.confirm('确认发起吗?', { icon: 3, title: '提示' }, function (index) {
+                            //do something
+                            $.ajax({
+                                url: '/ProcessStepRecord/start',
+                                type: 'post',
+                                data: { 'oi': obj.data, 'p_id':'7BB5A65C-C31C-4993-9CE2-12D8BABFADB3'},
+                                success: function (msg) {
+                                    if (msg == 'OK') {
+                                        layer.msg("发起成功！");
+                                        table.reload('test');
+                                    }
+                                }
+                            })
+                            layer.close(index);
+                        });
+                    }
+                })
+
+
+                form.on('submit(test)', function (data) {
+                    var j = [];
+                    $('#sD tbody tr').each(function () {
+                        var b = {};
+                        b.OilSpec = $(this).children('td').children(':text:eq(0)').val();
+                        b.Volume = $(this).children('td').children(':text:eq(1)').val();
+                        b.Surplus = $(this).children('td').children(':text:eq(2)').val();
+                        b.DayAvg = $(this).children('td').children(':text:eq(3)').val();
+                        b.NeedAmount = $(this).children('td').children(':text:eq(4)').val();
+                        j.push(b);
+                    });
+                    $.ajax({
+                        url: '/OilMaterialOrder/Save',
+                        type: 'post',
+                        data: {
+                            str: JSON.stringify(data.field), s: JSON.stringify(j)
+                        },
+                        success: function (msg) {
+                            debugger;
+                            if (msg == 'AddOk') {
+                                layer.closeAll();
+                                table.reload('test')
+                                layer.msg('添加成功！');
+                            } else if (msg == 'EditOk') {
+                                layer.closeAll();
+                                table.reload('test');
+                                layer.msg('修改成功！');
+                            } else {
+                                layer.msg('添加失败！');
+                            }
+                        }
+                    })
+                });
+                
+
+            })
+
+            $('.tableDel').click(function () {
+                if ($('#sD tbody tr').length == '1') {
+                    layer.msg('最少一条数据！');
+                } else {
+                    $(this).parent().parent().remove();
+                }
+            })
+
+            $('#tableAdd').click(function () {
+                var c = $('#sD tbody tr:eq(0)').clone(true);
+                c.children().children(':text').val('');
+                $('#sD tbody').append(c);
+            });
+
+            $('#btn-Apply').click(function () {
+                layer.open({
+                    type: 1,
+                    shade: 0.3,
+                    shadeClose: true,
+                    area: ['800px', '550px'],
+                    title: '修改',
+                    content: $('#sD')
+                    //content: '/Job/Operate?strId=' + obj.data.Id + '&strName=' + obj.data.Name + '&strCode=' + obj.data.Code //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                })
+            })
+        })
+
+
+        function ftime(date) {
+            if (date == null || date == "") {
+                return;
+            }
+            var data = new Date(parseInt(date.substr(6, 13)))
+            var year = data.getFullYear();
+            var month = data.getMonth() + 1;
+            var day = data.getDate();
+            var v = year + "-" + month + "-" + day;
+            return v;
+        }
+
+    </script>
+</head>
+<body>
+    <script type="text/html" id="toolDemo">
+        <button class="layui-btn layui-btn-xs layui-btn-normal" lay-event="up"> 发起</button>
+        <button class="layui-btn layui-btn-xs layui-btn-danger" lay-event="edit">修改</button>
+        <button class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del"> 删除</button>
+        <button class="layui-btn layui-btn-xs" lay-event="sel"> 流程视图</button>
+    </script>
+
+    <button class="layui-btn" id="btn-Apply">申请<i class="layui-icon">&#xe642;</i></button>
+
+    <div>
+        <table id="td" lay-filter="test"></table>
+    </div>
+
+    <div id="lC" style="display:none;">
+        <table id="lCtd" lay-filter="testlC"></table>
+    </div>
+
+    <div id="sD" style="display:none;">
+        <form class="layui-form" lay-filter="f" style="margin-top:18px;">
+            @*<input type="hidden" name="Id" />*@
+            @*<div class="layui-form-item pr">
+                <label class="layui-form-label">申请人</label>
+                <div class="layui-input-block">
+                    <input type="text" id="iApplyPersonName" name="ParentName" autocomplete="off" placeholder="" class="layui-input" style="width:190px;">
+                </div>
+            </div>*@
+            <div class="layui-form-item pr">
+                <label class="layui-form-label">申请时间</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" name="ApplyDate" id="in-date">
+                </div>
+            </div>
+            <div class="layui-form-item pr">
+                <label class="layui-form-label">备注</label>
+                <div class="layui-input-inline">
+                    <textarea name="Remark" placeholder="请输入内容" class="layui-textarea" style="width:600px;"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item pr">
+                <label class="layui-form-label">油料明细</label>
+                <div class="layui-input-inline" style="width:600px;">
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="30">
+                            <col width="30">
+                            <col width="30">
+                            <col width="30">
+                            <col width="30">
+                            <col width="30">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>油料规格</th>
+                                <th>油罐容积</th>
+                                <th>剩余</th>
+                                <th>日均销售</th>
+                                <th>需要（升）</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text"  autocomplete="off" placeholder="" class="layui-input"></td>
+                                <td><input type="text"  autocomplete="off" placeholder="" class="layui-input"></td>
+                                <td><input type="text"  autocomplete="off" placeholder="" class="layui-input"></td>
+                                <td><input type="text"  autocomplete="off" placeholder="" class="layui-input"></td>
+                                <td><input type="text"  autocomplete="off" placeholder="" class="layui-input"></td>
+                                <td><button type="button" class="tableDel layui-btn layui-btn-danger">删除</button></td>
+                            </tr>                            
+                        </tbody>
+                    </table>
+                    <button type="button" class="layui-btn layui-btn-xs" id="tableAdd"><i class="layui-icon">&#xe654;</i></button>
+                </div>
+            </div>
+            
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" lay-filter="test" id="UpBtn" class="layui-btn" lay-submit="">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+        @*<button id="save" class="layui-btn">保存</button>
+        <table id="td2" lay-filter="test2"></table>
+        <input type="hidden" id="istrid" />*@
+    </div>
+
+</body>
+</html>

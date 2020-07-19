@@ -1,0 +1,182 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>OrganizationStructureManage</title>
+    <link href="~/Scripts/layui/css/layui.css" rel="stylesheet" />
+    <script src="~/Scripts/layui/layui.js"></script>
+</head>
+<body>
+    <div class="xm">
+
+        <div class="xm-d2">
+            <div class="xm-d2-hang1">
+                <div class="pzright" style="margin-left:10px;height:27px;margin-top:4px;">
+                    @*<button class="layui-btn" id="btn-foldexpand"><i class="layui-icon">&#xe623;</i><span>全部展开</span></button>*@
+                    <button class="layui-btn" id="btn-refresh"><i class="layui-icon">&#xe9aa;</i>刷新表格</button>
+                    <button class="layui-btn layui-btn-warm" id="btn-Add" lay-event="add"><i class="layui-icon">&#xe654;</i> 添加子机构 </button>
+                    <button class="layui-btn layui-btn-normal" id="btn-Edit" lay-event="add"><i class="layui-icon">&#xe642;</i> 修改机构 </button>
+                    <button class="layui-btn layui-btn-danger" id="btn-Del" lay-event="add"><i class="layui-icon">&#xe640;</i> 删除机构及其子机构 </button>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="xm-d2-hang2">
+                <table id="permissionTable" class="layui-table" lay-filter="permissionTable"></table>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var $,data='';
+        /*使用模块加载的方式 加载文件*/
+    layui.config({
+            base:'@Url.Content("~/Scripts/layui/lay/modules/")'
+        }).extend({
+            treetable: 'treetable-lay/treetable'
+        }).use(['layer', 'table', 'treetable'], function () {
+            $ = layui.$;
+            var table = layui.table;
+            var layer = layui.layer;
+            var treetable = layui.treetable;
+
+            // 渲染表格
+            var renderTable = function () {//树桩表格参考文档：https://gitee.com/whvse/treetable-lay
+                layer.load(2);
+                treetable.render({
+                    treeColIndex: 0,//树形图标显示在第几列
+                    treeSpid: '0',//最上级的父级id
+                    treeIdName: 'Id',//id字段的名称
+                    treePidName: 'ParentId',//pid字段的名称
+                    treeDefaultClose: true,//是否默认折叠
+                    treeLinkage: false,//父级展开时是否自动展开所有子级
+                    elem: '#permissionTable',
+                    url: '/OrganizationStructure/select',
+                    page: false,
+                    cols: [[
+                        //{ type: 'numbers', title: '编号' },
+                        { field: 'Name', title: '组织机构名称' },
+                        { field: 'Code', title: '代码' },
+                        {
+                            field: 'Leve', title: '区域级别', templet: function (d) {
+                                var a;
+                                if (d.Leve=="0"){
+                                    a = '总部';
+                                } else if (d.Leve == "1") {
+                                    a = "大区";
+                                } else if (d.Leve == '2') {
+                                    a = '区域';
+                                } else if (d.Leve == '3') {
+                                    a = '油站';
+                                }
+                                return a;
+                            }
+                        },
+
+                        //{ templet: complain, title: '操作' }
+                    ]],
+                    done: function () {
+                        layer.closeAll('loading');
+                    }
+                });
+            };
+
+            renderTable();
+
+            //触发三个button按钮
+            $('#btn-foldexpand').click(function () {
+                if ($(this).children('span').text()=='全部展开') {
+                    treetable.expandAll('#permissionTable');
+                    $(this).children('span').text('全部折叠')
+                    $(this).children('i').html('&#xe625;');
+                } else {
+                    treetable.foldAll('#permissionTable');
+                    $(this).children('span').text('全部展开')
+                    $(this).children('i').html('&#xe623;');
+                }
+
+            });
+
+            $('#btn-refresh').click(function () {
+                data = '';
+                renderTable();
+            });
+
+            $('#btn-Add').click(function () {
+                layui.use('layer', function () {
+                    if (data == '') {
+                        layer.msg('请选择机构！');
+                        return;
+                    } if (data.Leve == '3') {
+                        layer.msg('油站是最小单位！');
+                        return;
+                    }
+                    layer.open({
+                        type: 2,
+                        shade: 0.3,
+                        shadeClose: true,
+                        area: ['400px', '400px'],
+                        title: '添加子机构',
+                        content: '/OrganizationStructure/Operate?strId=' + data.Id + '&state=add' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                    });
+                })
+
+               
+            })
+
+            $('#btn-Edit').click(function () {
+
+                layui.use('layer', function () {
+                    if (data == '') {
+                        layer.msg('请选择机构！');
+                        return;
+                    } 
+                    layer.open({
+                        type: 2,
+                        shade: 0.3,
+                        shadeClose: true,
+                        area: ['400px', '400px'],
+                        title: '修改子机构',
+                        content: '/OrganizationStructure/Operate?strId=' + data.Id + '&state=edit' //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                    });
+                })
+            })
+
+            $('#btn-Del').click(function () {
+                layer.confirm('确认删除吗?', { icon: 3, title: '提示' }, function (index) {
+                    //do something
+                    if (data == '') {
+                        layer.msg('请选择机构！');
+                        return;
+                    }
+                    $.ajax({
+                        url: '/OrganizationStructure/del',
+                        type: 'post',
+                        data: { 'strId': data.Id },
+                        success: function (msg) {
+                            if (msg == 'OK') {
+                                renderTable();
+                            }
+                        }
+                    })
+                    layer.close(index);
+                });
+            })
+            
+            //监听行单击事件（单击事件为：rowDouble）
+            table.on('row(permissionTable)', function (obj) {                
+                data = obj.data;
+                //标注选中样式
+                obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+            });
+
+            });
+        
+    </script>
+</body>
+</html>

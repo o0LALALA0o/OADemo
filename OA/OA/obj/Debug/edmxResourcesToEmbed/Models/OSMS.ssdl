@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OSMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Approver">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="JobCode" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="AreaLeve" Type="int" Nullable="false" />
+    <Property Name="Discrible" Type="nvarchar" MaxLength="100" />
+    <Property Name="Order" Type="int" Nullable="false" />
+    <Property Name="ProcessItemId" Type="uniqueidentifier" />
+    <Property Name="ExecuteMethod" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Entry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="StaffName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Sex" Type="bit" Nullable="false" />
+    <Property Name="BirthDay" Type="date" />
+    <Property Name="MaritalStatus" Type="bit" />
+    <Property Name="Height" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="HighestEducation" Type="int" />
+    <Property Name="Major" Type="nvarchar" MaxLength="500" />
+    <Property Name="ForeginLanguageAptitude" Type="nvarchar" MaxLength="500" />
+    <Property Name="IDNumber" Type="varchar" MaxLength="20" />
+    <Property Name="NativePlace" Type="nvarchar" MaxLength="500" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Email" Type="nvarchar" MaxLength="500" />
+    <Property Name="Tel" Type="char" MaxLength="20" />
+    <Property Name="HaseMedicalHistory" Type="bit" />
+    <Property Name="MedicalHistoryComment" Type="nvarchar" MaxLength="500" />
+    <Property Name="HobbiesAndSpeciality" Type="nvarchar" MaxLength="500" />
+    <Property Name="EducationalExperience1StartDate" Type="date" />
+    <Property Name="EducationalExperience1EndDate" Type="date" />
+    <Property Name="EducationalExperience1SchoolName" Type="nvarchar" MaxLength="500" />
+    <Property Name="EducationalExperience1Major" Type="nvarchar" MaxLength="500" />
+    <Property Name="EducationalExperience1Certificate" Type="nvarchar" MaxLength="500" />
+    <Property Name="EducationalExperience2StartDate" Type="date" />
+    <Property Name="EducationalExperience2EndDate" Type="date" />
+    <Property Name="EducationalExperience2SchoolName" Type="nvarchar" MaxLength="500" />
+    <Property Name="EducationalExperience2Major" Type="nvarchar" MaxLength="500" />
+    <Property Name="EducationalExperience2Certificate" Type="nvarchar" MaxLength="500" />
+    <Property Name="EducationalExperience3StartDate" Type="date" />
+    <Property Name="EducationalExperience3EndDate" Type="date" />
+    <Property Name="EducationalExperience3SchoolName" Type="nvarchar" MaxLength="500" />
+    <Property Name="EducationalExperience3Major" Type="nvarchar" MaxLength="500" />
+    <Property Name="EducationalExperience3Certificate" Type="nvarchar" MaxLength="500" />
+    <Property Name="EducationalExperience4StartDate" Type="date" />
+    <Property Name="EducationalExperience4EndDate" Type="date" />
+    <Property Name="EducationalExperience4SchoolName" Type="nvarchar" MaxLength="500" />
+    <Property Name="EducationalExperience4Major" Type="nvarchar" MaxLength="500" />
+    <Property Name="EducationalExperience4Certificate" Type="nvarchar" MaxLength="500" />
+    <Property Name="FamilyStatus1Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="FamilyStatus1Appellation" Type="nvarchar" MaxLength="500" />
+    <Property Name="FamilyStatus1Company" Type="nvarchar" MaxLength="500" />
+    <Property Name="FamilyStatus1Tel" Type="varchar" MaxLength="20" />
+    <Property Name="FamilyStatus2Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="FamilyStatus2Appellation" Type="nvarchar" MaxLength="500" />
+    <Property Name="FamilyStatus2Company" Type="nvarchar" MaxLength="500" />
+    <Property Name="FamilyStatus2Tel" Type="varchar" MaxLength="20" />
+    <Property Name="EmergencyContactName" Type="nvarchar" MaxLength="500" />
+    <Property Name="EmergencyContactTel" Type="varchar" MaxLength="20" />
+    <Property Name="EmergencyContactEelationShipWithMe" Type="nvarchar" MaxLength="500" />
+    <Property Name="WorkExperience1CompanyName" Type="nvarchar" MaxLength="500" />
+    <Property Name="WorkExperience1Job" Type="nvarchar" MaxLength="500" />
+    <Property Name="WorkExperience1StartDate" Type="date" />
+    <Property Name="WorkExperience1EndDate" Type="date" />
+    <Property Name="WorkExperience1Pay" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkExperience1LeavingReasons" Type="nvarchar" MaxLength="100" />
+    <Property Name="WorkExperience2CompanyName" Type="nvarchar" MaxLength="500" />
+    <Property Name="WorkExperience2Job" Type="nvarchar" MaxLength="500" />
+    <Property Name="WorkExperience2StartDate" Type="date" />
+    <Property Name="WorkExperience2EndDate" Type="date" />
+    <Property Name="WorkExperience2Pay" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkExperience2LeavingReasons" Type="nvarchar" MaxLength="100" />
+    <Property Name="WorkExperience3CompanyName" Type="nvarchar" MaxLength="500" />
+    <Property Name="WorkExperience3Job" Type="nvarchar" MaxLength="500" />
+    <Property Name="WorkExperience3StartDate" Type="date" />
+    <Property Name="WorkExperience3EndDate" Type="date" />
+    <Property Name="WorkExperience3Pay" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkExperience3LeavingReasons" Type="nvarchar" MaxLength="100" />
+    <Property Name="WorkExperience4CompanyName" Type="nvarchar" MaxLength="500" />
+    <Property Name="WorkExperience4Job" Type="nvarchar" MaxLength="500" />
+    <Property Name="WorkExperience4StartDate" Type="date" />
+    <Property Name="WorkExperience4EndDate" Type="date" />
+    <Property Name="WorkExperience4Pay" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkExperience4LeavingReasons" Type="nvarchar" MaxLength="100" />
+    <Property Name="JobId" Type="uniqueidentifier" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Organization_Id" Type="uniqueidentifier" />
+    <Property Name="SupervisorComments" Type="nvarchar" MaxLength="500" />
+    <Property Name="ProbationarySalary" Type="nvarchar" MaxLength="50" />
+    <Property Name="CorrectSalary" Type="nvarchar" MaxLength="50" />
+    <Property Name="WorkNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="EntryDate" Type="date" />
+    <Property Name="BirthCertificatePhoto" Type="nvarchar" MaxLength="200" />
+    <Property Name="RegistrationPhoto" Type="nvarchar" MaxLength="200" />
+    <Property Name="BankCardNumber" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreateStaffeId" Type="uniqueidentifier" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="No" Type="varchar" MaxLength="50" />
+    <Property Name="StaffNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Code" Type="nvarchar" MaxLength="100" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="IsDel" Type="bit" />
+  </EntityType>
+  <EntityType Name="LeaveOffice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="No" Type="nvarchar" MaxLength="100" />
+    <Property Name="StaffName" Type="nvarchar" MaxLength="100" />
+    <Property Name="JobId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="LeaveType" Type="char" MaxLength="1" />
+    <Property Name="ApplyDate" Type="date" />
+    <Property Name="Reason" Type="nvarchar" MaxLength="500" />
+    <Property Name="ExplanationHandover" Type="nvarchar" MaxLength="500" />
+    <Property Name="HandoverSatffId" Type="uniqueidentifier" />
+    <Property Name="ApplyPersonId" Type="uniqueidentifier" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="IsDel" Type="bit" />
+  </EntityType>
+  <EntityType Name="OilMaterialOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="No" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ApplyPersonId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ApplyDate" Type="date" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="UpdateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OilMaterialOrderDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OrderId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="OilSpec" Type="nvarchar" MaxLength="100" />
+    <Property Name="Volume" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Surplus" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="DayAvg" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="NeedAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="IsDel" Type="bit" />
+  </EntityType>
+  <EntityType Name="OrganizationStructure">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Leve" Type="int" Nullable="false" />
+    <Property Name="ParentId" Type="uniqueidentifier" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="IsDel" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProcessItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Discrible" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ProcessStepRecord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RecordRemarks" Type="nvarchar" MaxLength="500" />
+    <Property Name="StepOrder" Type="int" Nullable="false" />
+    <Property Name="WaitForExecutionStaffId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="WhetherToExecute" Type="bit" Nullable="false" />
+    <Property Name="No" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RefOrderId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Result" Type="bit" Nullable="false" />
+    <Property Name="ExecuteMethod" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Discrible" Type="nvarchar" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“OSMS.dbo.RoleResourceModule”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="RoleResourceModule">
+    <Key>
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="ResourceModuleId" />
+    </Key>
+    <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ResourceModuleId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="No" Type="nvarchar" MaxLength="500" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="Sex" Type="bit" />
+    <Property Name="BirthDay" Type="date" />
+    <Property Name="NativePlace" Type="nvarchar" MaxLength="500" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="Password" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tel" Type="nvarchar" MaxLength="20" />
+    <Property Name="Status" Type="char" MaxLength="1" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="JobId" Type="uniqueidentifier" />
+    <Property Name="OrgID" Type="uniqueidentifier" />
+    <Property Name="IsHSEGroup" Type="bit" />
+  </EntityType>
+  <EntityType Name="StaffRole">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="StaffId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemResourceModule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="500" />
+    <Property Name="Code" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Url" Type="nvarchar" MaxLength="1000" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="ParentId" Type="uniqueidentifier" />
+    <Property Name="OrderNo" Type="int" />
+  </EntityType>
+  <Association Name="FK__Approver__Proces__30F848ED">
+    <End Role="ProcessItem" Type="Self.ProcessItem" Multiplicity="0..1" />
+    <End Role="Approver" Type="Self.Approver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProcessItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Approver">
+        <PropertyRef Name="ProcessItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OilMateri__Order__31EC6D26">
+    <End Role="OilMaterialOrder" Type="Self.OilMaterialOrder" Multiplicity="1" />
+    <End Role="OilMaterialOrderDetail" Type="Self.OilMaterialOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OilMaterialOrder">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OilMaterialOrderDetail">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OSMSModelStoreContainer">
+    <EntitySet Name="Approver" EntityType="Self.Approver" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Entry" EntityType="Self.Entry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LeaveOffice" EntityType="Self.LeaveOffice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OilMaterialOrder" EntityType="Self.OilMaterialOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OilMaterialOrderDetail" EntityType="Self.OilMaterialOrderDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrganizationStructure" EntityType="Self.OrganizationStructure" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProcessItem" EntityType="Self.ProcessItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProcessStepRecord" EntityType="Self.ProcessStepRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StaffRole" EntityType="Self.StaffRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SystemResourceModule" EntityType="Self.SystemResourceModule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleResourceModule" EntityType="Self.RoleResourceModule" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RoleResourceModule].[RoleId] AS [RoleId], 
+    [RoleResourceModule].[ResourceModuleId] AS [ResourceModuleId]
+    FROM [dbo].[RoleResourceModule] AS [RoleResourceModule]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Approver__Proces__30F848ED" Association="Self.FK__Approver__Proces__30F848ED">
+      <End Role="ProcessItem" EntitySet="ProcessItem" />
+      <End Role="Approver" EntitySet="Approver" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OilMateri__Order__31EC6D26" Association="Self.FK__OilMateri__Order__31EC6D26">
+      <End Role="OilMaterialOrder" EntitySet="OilMaterialOrder" />
+      <End Role="OilMaterialOrderDetail" EntitySet="OilMaterialOrderDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

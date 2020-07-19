@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OSMSModelStoreContainer" CdmEntityContainer="OSMSEntities">
+    <EntitySetMapping Name="Approver">
+      <EntityTypeMapping TypeName="OSMSModel.Approver">
+        <MappingFragment StoreEntitySet="Approver">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="JobCode" ColumnName="JobCode" />
+          <ScalarProperty Name="AreaLeve" ColumnName="AreaLeve" />
+          <ScalarProperty Name="Discrible" ColumnName="Discrible" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="ProcessItemId" ColumnName="ProcessItemId" />
+          <ScalarProperty Name="ExecuteMethod" ColumnName="ExecuteMethod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entry">
+      <EntityTypeMapping TypeName="OSMSModel.Entry">
+        <MappingFragment StoreEntitySet="Entry">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="HighestEducation" ColumnName="HighestEducation" />
+          <ScalarProperty Name="Major" ColumnName="Major" />
+          <ScalarProperty Name="ForeginLanguageAptitude" ColumnName="ForeginLanguageAptitude" />
+          <ScalarProperty Name="IDNumber" ColumnName="IDNumber" />
+          <ScalarProperty Name="NativePlace" ColumnName="NativePlace" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="HaseMedicalHistory" ColumnName="HaseMedicalHistory" />
+          <ScalarProperty Name="MedicalHistoryComment" ColumnName="MedicalHistoryComment" />
+          <ScalarProperty Name="HobbiesAndSpeciality" ColumnName="HobbiesAndSpeciality" />
+          <ScalarProperty Name="EducationalExperience1StartDate" ColumnName="EducationalExperience1StartDate" />
+          <ScalarProperty Name="EducationalExperience1EndDate" ColumnName="EducationalExperience1EndDate" />
+          <ScalarProperty Name="EducationalExperience1SchoolName" ColumnName="EducationalExperience1SchoolName" />
+          <ScalarProperty Name="EducationalExperience1Major" ColumnName="EducationalExperience1Major" />
+          <ScalarProperty Name="EducationalExperience1Certificate" ColumnName="EducationalExperience1Certificate" />
+          <ScalarProperty Name="EducationalExperience2StartDate" ColumnName="EducationalExperience2StartDate" />
+          <ScalarProperty Name="EducationalExperience2EndDate" ColumnName="EducationalExperience2EndDate" />
+          <ScalarProperty Name="EducationalExperience2SchoolName" ColumnName="EducationalExperience2SchoolName" />
+          <ScalarProperty Name="EducationalExperience2Major" ColumnName="EducationalExperience2Major" />
+          <ScalarProperty Name="EducationalExperience2Certificate" ColumnName="EducationalExperience2Certificate" />
+          <ScalarProperty Name="EducationalExperience3StartDate" ColumnName="EducationalExperience3StartDate" />
+          <ScalarProperty Name="EducationalExperience3EndDate" ColumnName="EducationalExperience3EndDate" />
+          <ScalarProperty Name="EducationalExperience3SchoolName" ColumnName="EducationalExperience3SchoolName" />
+          <ScalarProperty Name="EducationalExperience3Major" ColumnName="EducationalExperience3Major" />
+          <ScalarProperty Name="EducationalExperience3Certificate" ColumnName="EducationalExperience3Certificate" />
+          <ScalarProperty Name="EducationalExperience4StartDate" ColumnName="EducationalExperience4StartDate" />
+          <ScalarProperty Name="EducationalExperience4EndDate" ColumnName="EducationalExperience4EndDate" />
+          <ScalarProperty Name="EducationalExperience4SchoolName" ColumnName="EducationalExperience4SchoolName" />
+          <ScalarProperty Name="EducationalExperience4Major" ColumnName="EducationalExperience4Major" />
+          <ScalarProperty Name="EducationalExperience4Certificate" ColumnName="EducationalExperience4Certificate" />
+          <ScalarProperty Name="FamilyStatus1Name" ColumnName="FamilyStatus1Name" />
+          <ScalarProperty Name="FamilyStatus1Appellation" ColumnName="FamilyStatus1Appellation" />
+          <ScalarProperty Name="FamilyStatus1Company" ColumnName="FamilyStatus1Company" />
+          <ScalarProperty Name="FamilyStatus1Tel" ColumnName="FamilyStatus1Tel" />
+          <ScalarProperty Name="FamilyStatus2Name" ColumnName="FamilyStatus2Name" />
+          <ScalarProperty Name="FamilyStatus2Appellation" ColumnName="FamilyStatus2Appellation" />
+          <ScalarProperty Name="FamilyStatus2Company" ColumnName="FamilyStatus2Company" />
+          <ScalarProperty Name="FamilyStatus2Tel" ColumnName="FamilyStatus2Tel" />
+          <ScalarProperty Name="EmergencyContactName" ColumnName="EmergencyContactName" />
+          <ScalarProperty Name="EmergencyContactTel" ColumnName="EmergencyContactTel" />
+          <ScalarProperty Name="EmergencyContactEelationShipWithMe" ColumnName="EmergencyContactEelationShipWithMe" />
+          <ScalarProperty Name="WorkExperience1CompanyName" ColumnName="WorkExperience1CompanyName" />
+          <ScalarProperty Name="WorkExperience1Job" ColumnName="WorkExperience1Job" />
+          <ScalarProperty Name="WorkExperience1StartDate" ColumnName="WorkExperience1StartDate" />
+          <ScalarProperty Name="WorkExperience1EndDate" ColumnName="WorkExperience1EndDate" />
+          <ScalarProperty Name="WorkExperience1Pay" ColumnName="WorkExperience1Pay" />
+          <ScalarProperty Name="WorkExperience1LeavingReasons" ColumnName="WorkExperience1LeavingReasons" />
+          <ScalarProperty Name="WorkExperience2CompanyName" ColumnName="WorkExperience2CompanyName" />
+          <ScalarProperty Name="WorkExperience2Job" ColumnName="WorkExperience2Job" />
+          <ScalarProperty Name="WorkExperience2StartDate" ColumnName="WorkExperience2StartDate" />
+          <ScalarProperty Name="WorkExperience2EndDate" ColumnName="WorkExperience2EndDate" />
+          <ScalarProperty Name="WorkExperience2Pay" ColumnName="WorkExperience2Pay" />
+          <ScalarProperty Name="WorkExperience2LeavingReasons" ColumnName="WorkExperience2LeavingReasons" />
+          <ScalarProperty Name="WorkExperience3CompanyName" ColumnName="WorkExperience3CompanyName" />
+          <ScalarProperty Name="WorkExperience3Job" ColumnName="WorkExperience3Job" />
+          <ScalarProperty Name="WorkExperience3StartDate" ColumnName="WorkExperience3StartDate" />
+          <ScalarProperty Name="WorkExperience3EndDate" ColumnName="WorkExperience3EndDate" />
+          <ScalarProperty Name="WorkExperience3Pay" ColumnName="WorkExperience3Pay" />
+          <ScalarProperty Name="WorkExperience3LeavingReasons" ColumnName="WorkExperience3LeavingReasons" />
+          <ScalarProperty Name="WorkExperience4CompanyName" ColumnName="WorkExperience4CompanyName" />
+          <ScalarProperty Name="WorkExperience4Job" ColumnName="WorkExperience4Job" />
+          <ScalarProperty Name="WorkExperience4StartDate" ColumnName="WorkExperience4StartDate" />
+          <ScalarProperty Name="WorkExperience4EndDate" ColumnName="WorkExperience4EndDate" />
+          <ScalarProperty Name="WorkExperience4Pay" ColumnName="WorkExperience4Pay" />
+          <ScalarProperty Name="WorkExperience4LeavingReasons" ColumnName="WorkExperience4LeavingReasons" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Organization_Id" ColumnName="Organization_Id" />
+          <ScalarProperty Name="SupervisorComments" ColumnName="SupervisorComments" />
+          <ScalarProperty Name="ProbationarySalary" ColumnName="ProbationarySalary" />
+          <ScalarProperty Name="CorrectSalary" ColumnName="CorrectSalary" />
+          <ScalarProperty Name="WorkNumber" ColumnName="WorkNumber" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="BirthCertificatePhoto" ColumnName="BirthCertificatePhoto" />
+          <ScalarProperty Name="RegistrationPhoto" ColumnName="RegistrationPhoto" />
+          <ScalarProperty Name="BankCardNumber" ColumnName="BankCardNumber" />
+          <ScalarProperty Name="CreateStaffeId" ColumnName="CreateStaffeId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="No" ColumnName="No" />
+          <ScalarProperty Name="StaffNo" ColumnName="StaffNo" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Job">
+      <EntityTypeMapping TypeName="OSMSModel.Job">
+        <MappingFragment StoreEntitySet="Job">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeaveOffice">
+      <EntityTypeMapping TypeName="OSMSModel.LeaveOffice">
+        <MappingFragment StoreEntitySet="LeaveOffice">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="No" ColumnName="No" />
+          <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="LeaveType" ColumnName="LeaveType" />
+          <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="ExplanationHandover" ColumnName="ExplanationHandover" />
+          <ScalarProperty Name="HandoverSatffId" ColumnName="HandoverSatffId" />
+          <ScalarProperty Name="ApplyPersonId" ColumnName="ApplyPersonId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OilMaterialOrder">
+      <EntityTypeMapping TypeName="OSMSModel.OilMaterialOrder">
+        <MappingFragment StoreEntitySet="OilMaterialOrder">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="No" ColumnName="No" />
+          <ScalarProperty Name="ApplyPersonId" ColumnName="ApplyPersonId" />
+          <ScalarProperty Name="ApplyDate" ColumnName="ApplyDate" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OilMaterialOrderDetail">
+      <EntityTypeMapping TypeName="OSMSModel.OilMaterialOrderDetail">
+        <MappingFragment StoreEntitySet="OilMaterialOrderDetail">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="OilSpec" ColumnName="OilSpec" />
+          <ScalarProperty Name="Volume" ColumnName="Volume" />
+          <ScalarProperty Name="Surplus" ColumnName="Surplus" />
+          <ScalarProperty Name="DayAvg" ColumnName="DayAvg" />
+          <ScalarProperty Name="NeedAmount" ColumnName="NeedAmount" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrganizationStructure">
+      <EntityTypeMapping TypeName="OSMSModel.OrganizationStructure">
+        <MappingFragment StoreEntitySet="OrganizationStructure">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Leve" ColumnName="Leve" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProcessItem">
+      <EntityTypeMapping TypeName="OSMSModel.ProcessItem">
+        <MappingFragment StoreEntitySet="ProcessItem">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Discrible" ColumnName="Discrible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProcessStepRecord">
+      <EntityTypeMapping TypeName="OSMSModel.ProcessStepRecord">
+        <MappingFragment StoreEntitySet="ProcessStepRecord">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="RecordRemarks" ColumnName="RecordRemarks" />
+          <ScalarProperty Name="StepOrder" ColumnName="StepOrder" />
+          <ScalarProperty Name="WaitForExecutionStaffId" ColumnName="WaitForExecutionStaffId" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="WhetherToExecute" ColumnName="WhetherToExecute" />
+          <ScalarProperty Name="No" ColumnName="No" />
+          <ScalarProperty Name="RefOrderId" ColumnName="RefOrderId" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="ExecuteMethod" ColumnName="ExecuteMethod" />
+          <ScalarProperty Name="Discrible" ColumnName="Discrible" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="OSMSModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staff">
+      <EntityTypeMapping TypeName="OSMSModel.Staff">
+        <MappingFragment StoreEntitySet="Staff">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="No" ColumnName="No" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+          <ScalarProperty Name="NativePlace" ColumnName="NativePlace" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="JobId" ColumnName="JobId" />
+          <ScalarProperty Name="OrgID" ColumnName="OrgID" />
+          <ScalarProperty Name="IsHSEGroup" ColumnName="IsHSEGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StaffRole">
+      <EntityTypeMapping TypeName="OSMSModel.StaffRole">
+        <MappingFragment StoreEntitySet="StaffRole">
+          <ScalarProperty Name="StaffId" ColumnName="StaffId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemResourceModule">
+      <EntityTypeMapping TypeName="OSMSModel.SystemResourceModule">
+        <MappingFragment StoreEntitySet="SystemResourceModule">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleResourceModule">
+      <EntityTypeMapping TypeName="OSMSModel.RoleResourceModule">
+        <MappingFragment StoreEntitySet="RoleResourceModule">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="ResourceModuleId" ColumnName="ResourceModuleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

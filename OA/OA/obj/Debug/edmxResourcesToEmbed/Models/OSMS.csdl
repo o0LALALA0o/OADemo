@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OSMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Approver">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="JobCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AreaLeve" Type="Int32" Nullable="false" />
+    <Property Name="Discrible" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Order" Type="Int32" Nullable="false" />
+    <Property Name="ProcessItemId" Type="Guid" />
+    <Property Name="ExecuteMethod" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ProcessItem" Relationship="Self.FK__Approver__Proces__30F848ED" FromRole="Approver" ToRole="ProcessItem" />
+  </EntityType>
+  <EntityType Name="Entry">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="StaffName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Sex" Type="Boolean" Nullable="false" />
+    <Property Name="BirthDay" Type="DateTime" Precision="0" />
+    <Property Name="MaritalStatus" Type="Boolean" />
+    <Property Name="Height" Type="Decimal" Precision="5" Scale="2" />
+    <Property Name="HighestEducation" Type="Int32" />
+    <Property Name="Major" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ForeginLanguageAptitude" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IDNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NativePlace" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Tel" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="HaseMedicalHistory" Type="Boolean" />
+    <Property Name="MedicalHistoryComment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="HobbiesAndSpeciality" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EducationalExperience1StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EducationalExperience1EndDate" Type="DateTime" Precision="0" />
+    <Property Name="EducationalExperience1SchoolName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EducationalExperience1Major" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EducationalExperience1Certificate" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EducationalExperience2StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EducationalExperience2EndDate" Type="DateTime" Precision="0" />
+    <Property Name="EducationalExperience2SchoolName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EducationalExperience2Major" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EducationalExperience2Certificate" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EducationalExperience3StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EducationalExperience3EndDate" Type="DateTime" Precision="0" />
+    <Property Name="EducationalExperience3SchoolName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EducationalExperience3Major" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EducationalExperience3Certificate" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EducationalExperience4StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EducationalExperience4EndDate" Type="DateTime" Precision="0" />
+    <Property Name="EducationalExperience4SchoolName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EducationalExperience4Major" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EducationalExperience4Certificate" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="FamilyStatus1Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="FamilyStatus1Appellation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="FamilyStatus1Company" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="FamilyStatus1Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FamilyStatus2Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="FamilyStatus2Appellation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="FamilyStatus2Company" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="FamilyStatus2Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EmergencyContactName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EmergencyContactTel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="EmergencyContactEelationShipWithMe" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="WorkExperience1CompanyName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="WorkExperience1Job" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="WorkExperience1StartDate" Type="DateTime" Precision="0" />
+    <Property Name="WorkExperience1EndDate" Type="DateTime" Precision="0" />
+    <Property Name="WorkExperience1Pay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WorkExperience1LeavingReasons" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="WorkExperience2CompanyName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="WorkExperience2Job" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="WorkExperience2StartDate" Type="DateTime" Precision="0" />
+    <Property Name="WorkExperience2EndDate" Type="DateTime" Precision="0" />
+    <Property Name="WorkExperience2Pay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WorkExperience2LeavingReasons" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="WorkExperience3CompanyName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="WorkExperience3Job" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="WorkExperience3StartDate" Type="DateTime" Precision="0" />
+    <Property Name="WorkExperience3EndDate" Type="DateTime" Precision="0" />
+    <Property Name="WorkExperience3Pay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WorkExperience3LeavingReasons" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="WorkExperience4CompanyName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="WorkExperience4Job" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="WorkExperience4StartDate" Type="DateTime" Precision="0" />
+    <Property Name="WorkExperience4EndDate" Type="DateTime" Precision="0" />
+    <Property Name="WorkExperience4Pay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WorkExperience4LeavingReasons" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="JobId" Type="Guid" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Organization_Id" Type="Guid" />
+    <Property Name="SupervisorComments" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ProbationarySalary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CorrectSalary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WorkNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EntryDate" Type="DateTime" Precision="0" />
+    <Property Name="BirthCertificatePhoto" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="RegistrationPhoto" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BankCardNumber" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CreateStaffeId" Type="Guid" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="StaffNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="IsDel" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="LeaveOffice">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="No" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="StaffName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="JobId" Type="Guid" Nullable="false" />
+    <Property Name="LeaveType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ApplyDate" Type="DateTime" Precision="0" />
+    <Property Name="Reason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ExplanationHandover" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="HandoverSatffId" Type="Guid" />
+    <Property Name="ApplyPersonId" Type="Guid" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="IsDel" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="OilMaterialOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="No" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ApplyPersonId" Type="Guid" Nullable="false" />
+    <Property Name="ApplyDate" Type="DateTime" Precision="0" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IsDel" Type="Boolean" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="OilMaterialOrderDetail" Relationship="Self.FK__OilMateri__Order__31EC6D26" FromRole="OilMaterialOrder" ToRole="OilMaterialOrderDetail" />
+  </EntityType>
+  <EntityType Name="OilMaterialOrderDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="OrderId" Type="Guid" Nullable="false" />
+    <Property Name="OilSpec" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Volume" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Surplus" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="DayAvg" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="NeedAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="IsDel" Type="Boolean" />
+    <NavigationProperty Name="OilMaterialOrder" Relationship="Self.FK__OilMateri__Order__31EC6D26" FromRole="OilMaterialOrderDetail" ToRole="OilMaterialOrder" />
+  </EntityType>
+  <EntityType Name="OrganizationStructure">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Leve" Type="Int32" Nullable="false" />
+    <Property Name="ParentId" Type="Guid" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="IsDel" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProcessItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Discrible" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Approver" Relationship="Self.FK__Approver__Proces__30F848ED" FromRole="ProcessItem" ToRole="Approver" />
+  </EntityType>
+  <EntityType Name="ProcessStepRecord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RecordRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="StepOrder" Type="Int32" Nullable="false" />
+    <Property Name="WaitForExecutionStaffId" Type="Guid" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="WhetherToExecute" Type="Boolean" Nullable="false" />
+    <Property Name="No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RefOrderId" Type="Guid" Nullable="false" />
+    <Property Name="Result" Type="Boolean" Nullable="false" />
+    <Property Name="ExecuteMethod" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Discrible" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Code" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="No" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="Boolean" />
+    <Property Name="BirthDay" Type="DateTime" Precision="0" />
+    <Property Name="NativePlace" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="JobId" Type="Guid" />
+    <Property Name="OrgID" Type="Guid" />
+    <Property Name="IsHSEGroup" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="StaffRole">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="StaffId" Type="Guid" Nullable="false" />
+    <Property Name="RoleId" Type="Guid" Nullable="false" />
+    <Property Name="id" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemResourceModule">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Url" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="ParentId" Type="Guid" />
+    <Property Name="OrderNo" Type="Int32" />
+  </EntityType>
+  <EntityType Name="RoleResourceModule">
+    <Key>
+      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="ResourceModuleId" />
+    </Key>
+    <Property Name="RoleId" Type="Guid" Nullable="false" />
+    <Property Name="ResourceModuleId" Type="Guid" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Approver__Proces__30F848ED">
+    <End Role="ProcessItem" Type="Self.ProcessItem" Multiplicity="0..1" />
+    <End Role="Approver" Type="Self.Approver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProcessItem">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Approver">
+        <PropertyRef Name="ProcessItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OilMateri__Order__31EC6D26">
+    <End Role="OilMaterialOrder" Type="Self.OilMaterialOrder" Multiplicity="1" />
+    <End Role="OilMaterialOrderDetail" Type="Self.OilMaterialOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OilMaterialOrder">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OilMaterialOrderDetail">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OSMSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Approver" EntityType="Self.Approver" />
+    <EntitySet Name="Entry" EntityType="Self.Entry" />
+    <EntitySet Name="Job" EntityType="Self.Job" />
+    <EntitySet Name="LeaveOffice" EntityType="Self.LeaveOffice" />
+    <EntitySet Name="OilMaterialOrder" EntityType="Self.OilMaterialOrder" />
+    <EntitySet Name="OilMaterialOrderDetail" EntityType="Self.OilMaterialOrderDetail" />
+    <EntitySet Name="OrganizationStructure" EntityType="Self.OrganizationStructure" />
+    <EntitySet Name="ProcessItem" EntityType="Self.ProcessItem" />
+    <EntitySet Name="ProcessStepRecord" EntityType="Self.ProcessStepRecord" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="Staff" EntityType="Self.Staff" />
+    <EntitySet Name="StaffRole" EntityType="Self.StaffRole" />
+    <EntitySet Name="SystemResourceModule" EntityType="Self.SystemResourceModule" />
+    <EntitySet Name="RoleResourceModule" EntityType="Self.RoleResourceModule" />
+    <AssociationSet Name="FK__Approver__Proces__30F848ED" Association="Self.FK__Approver__Proces__30F848ED">
+      <End Role="ProcessItem" EntitySet="ProcessItem" />
+      <End Role="Approver" EntitySet="Approver" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OilMateri__Order__31EC6D26" Association="Self.FK__OilMateri__Order__31EC6D26">
+      <End Role="OilMaterialOrder" EntitySet="OilMaterialOrder" />
+      <End Role="OilMaterialOrderDetail" EntitySet="OilMaterialOrderDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

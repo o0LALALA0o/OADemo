@@ -1,0 +1,199 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.cookie.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            //读取cookie
+            if ($.cookie("uname") != null && $.cookie("upwd") != null) {
+                $(".che").attr("checked", "checked");
+            }
+            $(":text[name='LoginName']").val($.cookie("uname"));
+            $(":password[name='Loginpwd']").val($.cookie("upwd"));
+
+            $(":button").click(function () {
+
+                if ($('.txt[name="LoginName"]').val() == "") {
+                    alert('账号不得为空!');
+                }
+                else if ($('.txt[name="Loginpwd"]').val() == "") {
+                    alert('密码不得为空!');
+                }
+                else {
+
+                    var data = $(".txt").serialize();
+
+                    $.ajax({
+                        type: "post",
+                        url: "/Main/selectLogin",
+                        data: data,
+                        success: function (msg) {
+                            if (msg == "1") {
+                                if ($(".che:checked").length == 1) {
+                                    //存cookie
+                                    $.cookie("uname", $(":text[name='LoginName']").val(), { expires: 7 });
+                                    $.cookie("upwd", $(":password[name='Loginpwd']").val(), { expires: 7 });
+                                } else {
+                                    //清空cookie
+                                    $.cookie("uname", null, { expires: -1 });
+                                    $.cookie("upwd", null, { expires: -1 });
+                                }
+                                location.href = "/Main/Index";
+                            } else {
+                                alert('账户或密码错误!');
+                            }
+                        }
+                    })
+                }
+
+
+
+                //$.post("Handler/UserInfo.ashx", data, function (msg) {
+                //    if (msg == "1") {
+                //        location.href = "Main.aspx";
+                //    } else {
+                //        alert('账户或密码错误!');
+                //    }
+                //})
+            });
+
+            //回车触发登录
+            $(window).keydown(function (event) {
+                if (event.keyCode == 13) {
+                    $(":button").click();
+                }
+            });
+
+        })
+    </script>
+    <style>
+        body {
+            background: url("/img/123.png");
+            /*这三句是让整个div固定在屏幕的最上方和最左方*/
+            position: fixed;
+            top: 0;
+            left: 0;
+            /*上面前两句是让整个div跟屏幕实现一模一样的大小，从而达到全屏效果，而min-width是为了实现让屏幕宽度在1000px以内时，div的大小保持不变，也就是说在这种情况下，缩放屏幕宽度时，图片不要缩放（只有在1000px以内才有效）。*/
+            width: 100%;
+            height: 100%;
+            min-width: 1000px;
+            /*让整个div在HTML页面中各个层级的下方*/
+            z-index: -10;
+            /*这个是背景不要重复*/
+            background-repeat: no-repeat;
+            /*三句是一个意思，就是让图片随屏幕大小同步缩放，但是有部分可能会被裁切，不过不至于会露白，下面两句是为chrome和opera浏览器作兼容。*/
+            background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            /*这句的意思就是图片的位置，居中，靠左对齐。*/
+            background-position: center 0;
+        }
+
+        #d {
+            background: rgba(255,0,0,0.8);
+            /*去掉点击时的边框*/
+            outline: none;
+            width: 280px;
+            height: 45px;
+            /*圆角*/
+            border-radius: 72px;
+            border: none;
+            z-index: 6;
+            font-size: 18px;
+            font-family: "Microsoft YaHei";
+            color: rgb(255, 255, 255);
+            /*阴影*/
+            box-shadow: 0px 3px 3px 3px rgba(10,10, 10, 0.5);
+        }
+
+        .window {
+            width: 700px;
+            height: 480px;
+            line-height: 15px;
+            background: rgba(0,0,0,0.5);
+            /*圆角*/
+            border-radius: 72px;
+            z-index: -1;
+            /*阴影*/
+            box-shadow: 0px 13px 5px 7.35px rgba(10,10, 10, 0.5);
+            margin: 80px auto;
+        }
+
+            .window .row {
+                text-align: center;
+                margin-top: 38px;
+                color: rgb(255, 255, 255);
+                font-size: 18px;
+                /*vertical-align:middel;*/
+            }
+
+        .txt {
+            width: 450px;
+            height: 38px;
+            border-radius: 72px;
+            /*去掉点击时的边框*/
+            outline: none;
+            border: none;
+            font-size: 18px;
+            font-family: "Microsoft YaHei";
+            color: rgb(50, 50, 50);
+            text-align: center;
+        }
+
+        .che {
+            /*设置checkbox大小*/
+            zoom: 1.0;
+            -moz-transform: scale(1.3);
+            -ms-transform: scale(1.3);
+            -webkit-transform: scale(1.3);
+            -o-transform: scale(1.3);
+        }
+
+        .logintitle {
+            font-size: 48px;
+            font-family: "Microsoft YaHei";
+            color: rgb(234, 234, 234);
+            line-height: 1.903;
+            text-align: center;
+            -moz-transform: matrix( 0.8750489968308,0,0,0.8750489968308,0,0);
+            -webkit-transform: matrix( 0.8750489968308,0,0,0.8750489968308,0,0);
+            -ms-transform: matrix( 0.8750489968308,0,0,0.8750489968308,0,0);
+            text-shadow: 5px 2px 6px #000;
+        }
+
+        .bottom {
+            margin-bottom: 5px;
+            text-align: center;
+            color: rgba(255,255,255,1);
+            font-size: 18px;
+        }
+    </style>
+    <title>登录</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="box">
+            <div class="window">
+                <div class="logintitle">HRCMR后台管理系统</div>
+                <div class="row"><input type="text" class="txt" placeholder="用户名" name="LoginName" /></div>
+                <div class="row">
+                    <input type="password" placeholder="密码" class="txt" name="Loginpwd" />
+                    <br /><br /><br /><label><input class="che" type="checkbox" />记住密码</label>
+                </div>
+
+                <div class="row"><input type="button" id="d" value="登陆" /></div>
+            </div>
+            <div class="bottom">Copyright ©2019 By JiangHao</div>
+        </div>
+    </form>
+</body>
+</html>

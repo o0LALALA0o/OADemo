@@ -1,0 +1,78 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+    <link href="~/Scripts/layui/css/layui.css" rel="stylesheet" />
+    <script src="~/Scripts/layui/layui.js"></script>
+
+    <script type="text/javascript">
+        layui.use("form", function () {
+            var $ = layui.$, form = layui.form;
+
+            form.val('f', form.on('submit(test)', function (data){
+                "Name": '@ViewBag.strName.ToString()',
+                "Code": '@ViewBag.strCode.ToString()',
+                "Id":'@ViewBag.strId.ToString()',
+            });
+
+                 {
+
+                $.ajax({
+                    url: "/Job/Save",
+                    type: 'post',
+                    data: data.field,
+                    success: function (msg) {
+                        if (msg == "AddOK") {
+                            window.parent.layer.closeAll();
+                            window.parent.layer.msg('添加成功！');
+                            window.parent.table.reload('test')
+
+                        } else if (msg == "EditOK") {
+                            window.parent.layer.closeAll();
+                            window.parent.layer.msg('修改成功！');
+                            window.parent.table.reload('test')
+                        } else {
+                            layer.msg('添加失败！');
+                        }
+                    }
+                })
+
+            });
+
+        })
+
+
+    </script>
+
+</head>
+<body>
+    <form class="layui-form" lay-filter="f">
+        <input type="hidden" name="Id" />
+        <div class="layui-form-item" style="margin-top:18px;">
+            <label class="layui-form-label">职位名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="Name" lay-verify="required" autocomplete="off" placeholder="请输入职位名称" class="layui-input" style="width:200px;">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">职位代码</label>
+            <div class="layui-input-block">
+                <input type="text" name="Code" lay-verify="required" autocomplete="off" placeholder="请输入职位代码" class="layui-input" style="width:200px;">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="button" lay-filter="test" class="layui-btn" lay-submit="" >立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

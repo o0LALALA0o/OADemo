@@ -1,0 +1,134 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+@{OA.Models.organizationStructureViewData data = ViewBag.data;}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Operate</title>
+    <link href="~/Scripts/layui/css/layui.css" rel="stylesheet" />
+    <script src="~/Scripts/layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.use('form', function () {
+            var $ = layui.$, form = layui.form, layer = layui.layer;
+
+            form.val('f',{
+                "ParentName": '@data.ParentName.ToString()',
+                "ParentCode": '@data.ParentCode.ToString()',
+                "ParentId": '@{ if (data.ParentId == null)
+                    {
+                        string a = string.Empty;
+                        @a;
+                    }
+                    else
+                    {
+                        @data.ParentId;
+                    }
+                }',
+                "Name": '@data.Name.ToString()',
+                "Leve": '@data.Leve.ToString()',
+                "LeveName":'@if (data.Leve == 0) {
+                   @Html.Raw("总部");
+                } else if (data.Leve == 1) {
+                    @Html.Raw("大区");
+                } else if (data.Leve == 2) {
+                    @Html.Raw("区域");
+                } else if (data.Leve == 3) {
+                    @Html.Raw("油站");
+                }',
+                "Id": '@{if (data.Id == null)
+                    {
+                        string a = string.Empty;
+                        @a;
+                    }
+                    else
+                    {
+                        @data.Id;
+                    }
+                }',
+                "Code": '@data.Code.ToString()',
+
+            })
+
+            if ('@data.ParentName.ToString()' == '' && '@data.ParentCode.ToString()' == '') {
+                $(".pr").css('display', 'none');
+            }
+
+            form.on('submit(test)', function (data) {
+                $.ajax({
+                    url: '/OrganizationStructure/Save',
+                    type: 'post',
+                    data: data.field,
+                    success: function (msg) {
+                        debugger;
+                        if (msg == 'AddOk') {
+                            window.parent.layer.closeAll();
+                            window.parent.layer.msg('添加成功！');
+                            window.parent.$('#btn-refresh').click();
+                        } else if (msg == 'EditOk') {
+                            window.parent.layer.closeAll();
+                            window.parent.layer.msg('修改成功！');
+                            window.parent.$('#btn-refresh').click();
+                        } else {
+                            layer.msg('添加失败！');
+                        }
+                    }
+                })
+            });
+
+        })
+    </script>
+    <style>
+       
+
+    </style>
+</head>
+<body>
+    <div>
+        <form class="layui-form" lay-filter="f" style="margin-top:18px;">
+            <input type="hidden" name="Id" />
+            <input type="hidden" name="ParentId" />
+            <div class="layui-form-item pr" >
+                <label class="layui-form-label">上级机构</label>
+                <div class="layui-input-block">
+                    <input type="text" id="iParentName" name="ParentName" disabled autocomplete="off" placeholder="" class="layui-input" style="width:200px;">
+                </div>
+            </div>            
+            <div class="layui-form-item pr">
+                <label class="layui-form-label">上级机构代码</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="iParentCode" name="ParentCode" disabled autocomplete="off" placeholder="" class="layui-input" style="width:200px;">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">机构级别</label>
+                <div class="layui-input-block">
+                    <input type="hidden" name="Leve" />
+                    <input type="text" name="LeveName" disabled lay-verify="required" autocomplete="off" placeholder="请输入机构级别" class="layui-input" style="width:200px;">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">机构名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Name" lay-verify="required" autocomplete="off" placeholder="请输入机构名称" class="layui-input" style="width:200px;">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">代码</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Code" lay-verify="required" autocomplete="off" placeholder="请输入代码" class="layui-input" style="width:200px;">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="button" lay-filter="test" class="layui-btn" lay-submit="">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
